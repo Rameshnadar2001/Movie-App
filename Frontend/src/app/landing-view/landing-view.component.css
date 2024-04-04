@@ -1,0 +1,117 @@
+.landing-card {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 13px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: crimson;
+  margin: 100px 30px;
+  padding: 20px 20px;
+}
+
+.next {
+  padding: 10px 20px;
+  border-radius: 50%;
+  border: 5px solid teal;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.prev {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 50%;
+  border: 5px solid #63beff;
+  font-size: 20px;
+  font-weight: 600;
+}
+.disable {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.genre-filter {
+  margin-top: 37px;
+  text-align: end;
+  margin-right: 27px;
+}
+.carousel-inner {
+  height: 610px;
+}
+.carousel-inner .carousel-item img {
+  height: 610px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.carousel-caption h2 {
+  font-weight: 900;
+  font-size: xxx-large;
+}
+.carousel-caption p {
+  font-size: large;
+}
+.rowposter {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.rowimg {
+  max-height: 300px;
+  margin-right: 7px;
+  transition: transform 450ms;
+}
+.rowimg:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+.rowposter::-webkit-scrollbar {
+  display: none;
+}
+.carousel:hover {
+  cursor: pointer;
+}
+.main {
+  padding-top: 4.9rem;
+}
+.carousel-control-next {
+  right: -93px;
+}
+.carousel-control-next-icon {
+  margin-right: 7rem;
+}
+#sort {
+  color: white;
+}
+#arrowUpward {
+  position: fixed;
+  z-index: 1;
+  top: 45rem;
+  right: 50rem;
+  background-color: white;
+}
+h6 {
+  color: #fff;
+  margin: 15px 0px -10px 5px;
+}
+.filterLang {
+  position: absolute;
+  margin-left: 25px;
+}
+.filterDesign {
+  display: flex;
+  justify-content: space-between;
+}
+.allMovies {
+  position: relative;
+  top: 3rem;
+}
+
+.searchedResult-section {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5rem;
+}

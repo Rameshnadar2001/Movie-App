@@ -1,0 +1,78 @@
+<app-header></app-header>
+<div class="contain-fluid">
+  <div class="row p-4">
+    <div class="col-lg-12 bg-image">
+      <img
+        id="backdrop-img"
+        style="
+          height: 500px;
+          object-fit: cover;
+          object-position: 0px -70px;
+          margin-left: 10px;
+          padding-top: 2rem;
+        "
+        src="http://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}"
+        alt=""
+      />
+      <div class="dark-gradient"></div>
+    </div>
+  </div>
+</div>
+<div
+  class="contain"
+  style="margin-left: 6rem; margin-right: 3rem; margin-top: -5rem"
+>
+  <div class="row">
+    <div class="col-lg-4">
+      <img
+        id="poster-img"
+        src="http://image.tmdb.org/t/p/original/{{ movie.poster_path }}"
+        alt=""
+      />
+    </div>
+    <div class="col-lg-6 mt-5 p-4">
+      <h1>{{ movie.title }}</h1>
+      <h3>
+        <mat-icon id="star">star</mat-icon>
+        {{ movie.vote_average.toFixed(1) }}/10
+      </h3>
+      <p>{{ movie.overview }}</p>
+      <p>
+        <mat-chip-list>
+          <mat-chip *ngFor="let genre of movie.genres">
+            {{ genre.name }}
+          </mat-chip>
+        </mat-chip-list>
+      </p>
+      <div>
+        <button mat-icon-button (click)="addToFavorites(movie)">
+          <mat-icon class="favIcon" *ngIf="isAFavoriteMovie(movie)"
+            >favorite</mat-icon
+          >
+          <mat-icon class="favIcon" *ngIf="!isAFavoriteMovie(movie)"
+            >favorite_border</mat-icon
+          >
+        </button>
+        <a class="btn btn-md" (click)="playVideo()"
+          ><mat-icon id="arrow">play_arrow</mat-icon> Watch Now</a
+        >
+      </div>
+    </div>
+  </div>
+  <h5 class="text-white mt-5">
+    {{ "PEOPLE WHO LIKED " + movie.title + " ALSO LIKED" | uppercase }}
+  </h5>
+  <div class="rowposter mt-3 p-2">
+    <ng-container *ngFor="let movie of movieRecommendation">
+      <img
+        src="http://image.tmdb.org/t/p/original/{{ movie.poster_path }}"
+        class="rowimg largeposter"
+        alt="..."
+        routerLink="/movie-detail/{{ movie.id }}"
+      />
+    </ng-container>
+  </div>
+</div>
+<div class="contain mt-3 p-4">
+  <!-- trending movies -->
+</div>

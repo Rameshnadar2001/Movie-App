@@ -1,0 +1,49 @@
+<mat-toolbar id="navBar" color="primary">
+  <a id="title" routerLink="/user/home">MOVIEZONE</a>
+  <div *ngIf="!isFav && !isPresentInLogin && !isPresentInSignup && !isNotFound">
+    <app-search (onSearch)="searchExport($event)"></app-search>
+  </div>
+  <div id="buttons">
+    <div *ngIf="!isLoggedIn">
+      <a routerLink="/home" class="SMN_effect-7" data-hover="Home">Home</a>
+      <a
+        *ngIf="!isPresentInLogin"
+        class="SMN_effect-7 navBar-item"
+        id="login"
+        data-hover="Login"
+        routerLink="/login"
+        >Login
+      </a>
+      <a
+        *ngIf="!isPresentInSignup"
+        class="SMN_effect-7 navBar-item"
+        data-hover="Signup"
+        routerLink="/register"
+        >Signup</a
+      >
+    </div>
+    <div *ngIf="isLoggedIn" id="user-img">
+      <img id="profile-img" src="../../assets/{{ profileImage }}" alt="" />
+      <div class="user-info" (click)="toggleDropdown()">
+        <h5>{{ userData.userName }}</h5>
+      </div>
+      <span (click)="toggleDropdown()"><mat-icon>expand_more</mat-icon></span>
+      <div *ngIf="showDropdown" class="logout-dropdown">
+        <ul>
+          <a routerLink="/favoriteMovies" style="text-decoration: none"
+            ><li>
+              <mat-icon class="dropDown_icon">favorite_border</mat-icon
+              >Favorites
+            </li></a
+          >
+          <a routerLink="/home" style="text-decoration: none"
+            ><li><mat-icon class="dropDown_icon">home</mat-icon>Home</li></a
+          >
+          <a (click)="logout()"
+            ><li><mat-icon class="dropDown_icon">logout</mat-icon>Logout</li></a
+          >
+        </ul>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

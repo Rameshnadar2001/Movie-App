@@ -1,0 +1,14 @@
+<div class="search-box">
+  <mat-form-field id="searchBar" appearance="fill">
+    <mat-label>Search for movies</mat-label>
+    <input
+      matInput
+      type="search"
+      (keyup)="search()"
+      [(ngModel)]="searchText"
+    />
+  </mat-form-field>
+  <button type="button" mat-icon-button (click)="search()">
+    <mat-icon id="icon">search</mat-icon>
+  </button>
+</div>

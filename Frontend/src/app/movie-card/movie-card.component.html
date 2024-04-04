@@ -1,0 +1,38 @@
+<mat-card
+  class="card2"
+  (mouseenter)="buttonVisibility()"
+  (mouseleave)="onMouseLeave()"
+  *ngIf="movie.poster_path"
+>
+  <img
+    mat-card-image
+    [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+    alt="{{ movie.title }}"
+  />
+  <div class="overlay" routerLink="/movie-detail/{{ movie.id }}"></div>
+  <img
+    id="youtube"
+    *ngIf="isHovered"
+    mat-card-image
+    src="../../assets/svg/youtube-svgrepo-com.svg"
+    alt=""
+    (click)="watchVideo()"
+  />
+  <div class="mat-icon" *ngIf="!isFavoriteMovie">
+    <button mat-icon-button color="accent">
+      <mat-icon class="icon" *ngIf="isAFavoriteMovie(movie)">favorite</mat-icon>
+    </button>
+  </div>
+  <div class="mat-icon" *ngIf="isHovered && !isFavoriteMovie">
+    <button mat-icon-button color="accent" (click)="addToFavorites(movie)">
+      <mat-icon class="icon" *ngIf="!isAFavoriteMovie(movie)"
+        >favorite_border</mat-icon
+      >
+    </button>
+  </div>
+  <div class="button" *ngIf="isFavoriteMovie">
+    <a (click)="deleteFromFavorite()">
+      REMOVE <mat-icon class="delete-icon">delete </mat-icon>
+    </a>
+  </div>
+</mat-card>

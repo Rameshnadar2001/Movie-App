@@ -1,0 +1,64 @@
+<app-header [isPresentInLogin]="isPresentInLogin"></app-header>
+<div class="contain">
+  <div id="login">
+    <h1>Login</h1>
+    <div *ngIf="errorMessage" class="error">
+      {{ errorText }}
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Email</mat-label>
+      <input
+        matInput
+        [(ngModel)]="user.emailId"
+        name="email"
+        type="text"
+        #email="ngModel"
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        required
+      />
+      <mat-icon matSuffix>mail</mat-icon>
+      <mat-error *ngIf="email.errors?.['required']">
+        Email id is required
+      </mat-error>
+      <mat-error *ngIf="email.errors?.['pattern']">
+        Enter valid email id
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        [(ngModel)]="user.password"
+        name="password"
+        type="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon id="eye-icon">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <a routerLink="/forgotPassword">Forgot Password?</a>
+
+    <div>
+      <button
+        matButton
+        id="login-button"
+        mat-raised-button
+        color="primary"
+        (click)="getToken()"
+      >
+        Login
+      </button>
+    </div>
+    <p>Don't have an account? <a routerLink="../register">Sign Up</a></p>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+* {
+  font-family: sans-serif;
+}
+#container1 {
+  margin-top: 12rem;
+  text-align: center;
+}
+#error-msg1 {
+  font-size: 15rem;
+  margin-top: 0px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+#error-msg2 {
+  font-size: 3rem;
+  color: antiquewhite;
+  font-family: system-ui;
+}
+#error-msg3 {
+  color: antiquewhite;
+  font-weight: 500;
+  font-family: system-ui;
+}
+a {
+  text-decoration: none;
+}
+#container2 {
+  text-align: center;
+  margin-bottom: 11rem;
+}

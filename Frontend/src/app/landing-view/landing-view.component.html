@@ -1,0 +1,110 @@
+<app-header id="header" (onMovieSearch)="searchMovie($event)"></app-header>
+<div class="main" *ngIf="movieSearch.length < 1">
+  <div
+    id="carouselExampleAutoplaying"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div
+        class="carousel-item active"
+        *ngFor="let movie of now_playingMovies; let i = index"
+        [ngClass]="{ active: i === 1 }"
+      >
+        <img
+          src="http://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}"
+          class="d-block w-100"
+          alt="..."
+          routerLink="/movie-detail/{{ movie.id }}"
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h2>{{ movie.title }}</h2>
+          <p>{{ movie.overview }}</p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="contain mt-3 p-4">
+    <!-- trending movies -->
+    <h5 class="text-white">Trending Movies</h5>
+    <div class="rowposter mt-3 p-2">
+      <ng-container *ngFor="let movie of trendingMovies">
+        <img
+          src="http://image.tmdb.org/t/p/original/{{ movie.poster_path }}"
+          class="rowimg largeposter"
+          alt="..."
+          routerLink="/movie-detail/{{ movie.id }}"
+        />
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="filterDesign">
+    <h5 class="text-white px-4 allMovies">All Movies</h5>
+    <div>
+      <h6 class="px-4">Select Language:</h6>
+      <app-filter
+        class="filterLang"
+        (onchipChange)="filterByLang($event)"
+      ></app-filter>
+    </div>
+    <div class="genre-filter">
+      <label for="genre" id="sort">Sort by Genre: </label>
+      <select id="genre" [(ngModel)]="genreSelection" (change)="sortByGenre()">
+        <option value="">All Genres</option>
+        <option *ngFor="let genre of genres" [value]="genre.id">
+          {{ genre.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <!-- Add this dropdown to your template -->
+
+  <button
+    mat-icon-button
+    id="arrowUpward"
+    *ngIf="isScrolledDown"
+    (click)="scrollToTop()"
+    matTooltip="Back to top"
+  >
+    <mat-icon>arrow_upward</mat-icon>
+  </button>
+
+  <!-- the rendering of app-movie-card is not waiting for the genres data before rendering,it's directly sending
+     empty array  -->
+  <div class="landing-card" *ngIf="genres.length > 0">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+      [genresss]="genres"
+    ></app-movie-card>
+  </div>
+</div>
+<div class="searchedResult-section" *ngIf="movieSearch.length > 0">
+  <app-movie-card
+    *ngFor="let searchedmovie of searchedMovies"
+    [movie]="searchedmovie"
+  ></app-movie-card>
+</div>

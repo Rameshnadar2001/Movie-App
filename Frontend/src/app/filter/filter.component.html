@@ -1,0 +1,10 @@
+<div>
+  <mat-chip-list aria-label="Categories">
+    <mat-chip (click)="test('')"  [selected]="fValue === ''">All</mat-chip>
+    <mat-chip (click)="test('en')"  [selected]="fValue === 'en'"
+      >English</mat-chip
+    >
+    <mat-chip (click)="test('hi')"  [selected]="fValue === 'hi'">Hindi</mat-chip>
+    <mat-chip (click)="test('ta')"  [selected]="fValue === 'ta'">Tamil</mat-chip>
+  </mat-chip-list>
+</div>

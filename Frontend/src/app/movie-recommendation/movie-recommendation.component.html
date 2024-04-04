@@ -1,0 +1,12 @@
+<a routerLink="/movie-detail/{{recommededMovie.id}}">
+    <mat-card class="card2">
+        <img mat-card-image  [src]="'https://image.tmdb.org/t/p/w500' + recommededMovie.poster_path" alt="{{ recommededMovie.title }}">
+        <mat-card-content>
+            <mat-card-title> <h3>{{recommededMovie.title}}</h3></mat-card-title>
+            <h5>id:{{recommededMovie.id}}</h5>
+            <h4>language {{recommededMovie.original_language}}</h4>
+              
+        </mat-card-content>
+        <button mat-raised-button style="background-color: rgb(211, 20, 116); color: white;" (click)="addToFavorites(recommededMovie)">Add Fav</button>
+    </mat-card>
+</a>

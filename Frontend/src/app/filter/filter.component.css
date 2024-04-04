@@ -1,0 +1,9 @@
+div {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+::ng-deep .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: #78a6b8;
+  color: white;
+}

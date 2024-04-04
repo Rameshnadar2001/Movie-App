@@ -1,0 +1,24 @@
+<div class="favMovies">
+  <app-header [isFav]="isFav"></app-header>
+  <h5 class="text-white" *ngIf="favoriteMovies.length > 0">
+    All Favorites ({{ favoriteMovies.length }})
+  </h5>
+  <div class="fav-container">
+    <app-movie-card
+      (onDelete)="deleteMovie($event)"
+      *ngFor="let movie of favoriteMovies"
+      [isFavoriteMovie]="isFavoriteMovie"
+      [movie]="movie"
+    ></app-movie-card>
+  </div>
+</div>
+<div *ngIf="favoriteMovies.length < 1" class="favorite-movies-section">
+  <div class="prompt-section">
+    <h2 class="headline">🎬 Welcome to Your Movie Universe! 🚀</h2>
+    <p class="subheading">
+      Embark on a cinematic journey by adding your favorite movies. Your movie
+      universe awaits, ready to unfold its wonders.
+    </p>
+    <button class="btn btn-primary" routerLink="/home">Add Favorites</button>
+  </div>
+</div>
